@@ -1,0 +1,143 @@
+:root {
+  --side-padding: 15rem;
+  --text-links-color: hsl(211deg 12% 100%);
+  --link-border-color: hsl(0deg 100% 100%);
+  --padding: 0.5rem;
+  --list-gap: 1rem;
+  --animate-suspense: pulsing 900ms alternate infinite;
+  --shimmer-color: hsl(0deg 10% 80%);
+  --outline-offset: 4px;
+  --post-left-padding: 2rem;
+  --width: min(100%, 800px);
+  --text-width: min(90%, 60ch);
+  --mobile-padding: 1rem;
+  --tablet-padding: 2rem;
+  --margin-padding: 3rem;
+}
+
+html[data-color-theme="dark"] {
+  --background-wrapper: hsl(0deg 20% 7%);
+  --hero-background: linear-gradient(
+      330deg,
+      transparent 50%,
+      hsl(310deg 100% 15%) 50%
+    ),
+    linear-gradient(30deg, transparent 65%, hsl(310deg 100% 30%) 50%),
+    linear-gradient(150deg, transparent 70%, hsl(310deg 100% 25%) 50%),
+    linear-gradient(210deg, transparent 60%, hsl(310deg 100% 20%) 50%);
+
+  --color: hsl(0deg 100% 100%);
+  --box-shadow: none;
+  --border: 1px solid hsl(0deg 100% 100%);
+  --border-radius: none;
+  --hover-color: hsl(25deg 100% 50%);
+  --logo-blur: 1px;
+  --button-blur: 10px;
+  --button-color: hsl(0deg 100% 0%);
+  --border-blur: 5px;
+  --button-base: hsl(0deg 100% 90%);
+  --button-clickable: hsl(0deg 100% 95%);
+  --button-text: hsl(0deg 100% 0%);
+  --border: 2px solid hsl(0deg 100% 100%);
+  --picture-blur: blur(10px);
+}
+
+html[data-color-theme="light"] {
+  --color: hsl(0deg 100% 0%);
+  --box-shadow: 4px 8px 4px hsl(0deg 100% 0%/ 0.3);
+  --border: 1px solid hsl(0deg 100% 0%);
+  --border-radius: 0.5rem;
+  --hover-color: hsl(25deg 100% 30%);
+  --logo-blur: 0px;
+  --button-blur: 0px;
+  --button-color: hsl(0deg 100% 100%);
+  --background-wrapper: hsl(0deg 40% 93%);
+  --hero-background: radial-gradient(
+      circle at 0% 80%,
+      hsl(210deg 100% 75%/ 0.4) 50%,
+      transparent 50% 100%
+    ),
+    radial-gradient(
+      circle at 130% -75%,
+      hsl(210deg 100% 80%/ 0.6) 50%,
+      transparent 50% 100%
+    ),
+    var(--background-wrapper);
+  --border-blur: 0px;
+  --button-base: hsl(0deg 100% 10%);
+  --button-clickable: hsl(0deg 100% 15%);
+  --button-text: hsl(0deg 100% 100%);
+  --border: 2px solid hsl(0deg 100% 0%);
+  --picture-blur: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+html,
+body,
+#___gatsby,
+#gatsby-focus-wrapper {
+  height: 100%;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+input {
+  padding: 0;
+}
+
+#root,
+#__next {
+  isolation: isolate;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+@font-face {
+  font-family: "Recursive";
+  src: url(./assets/fonts/Recursive.woff2) format("woff2 supports variations"),
+    url(./assets/fonts/Recursive.woff2) format("woff2-variations");
+  font-weight: 100 1000;
+  font-display: fallback;
+}

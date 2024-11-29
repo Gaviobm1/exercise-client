@@ -1,0 +1,12 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 390px;
+}
+
+.input {
+  border: none;
+  border-bottom: 2px solid black;
+  padding: 0.5rem;
+  background: transparent;
+}

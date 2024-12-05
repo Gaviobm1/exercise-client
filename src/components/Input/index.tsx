@@ -1,35 +1,32 @@
 import React, { ForwardedRef } from "react";
 import * as Label from "@radix-ui/react-label";
 import styles from "./Input.module.css";
+import { InputProps } from "../../types";
 
 const Input = React.forwardRef(function Input(
-  {
-    label,
-    id,
-    placeholder,
-    type = "text",
-  }: {
-    label: string;
-    id: string;
-    placeholder?: string;
-    type?: string;
-  },
+  { label, id, defaultValue = "", ...delegated }: InputProps,
   ref: ForwardedRef<HTMLInputElement>
 ) {
-  const [val, setVal] = React.useState("");
+  const [value, setValue] = React.useState(defaultValue);
   return (
-    <Label.Root htmlFor={id} className={styles.wrapper}>
+    <Label.Root
+      htmlFor={id}
+      className={
+        delegated.type === "checkbox" || delegated.type === "radio"
+          ? styles.radiocheck
+          : styles.wrapper
+      }
+    >
       {label}
       <input
         id={id}
         className={styles.input}
-        placeholder={placeholder}
-        type={type}
-        value={val}
-        onChange={(e) => {
-          setVal(e.target.value);
-        }}
         ref={ref}
+        value={value}
+        onChange={(e) => {
+          setValue(e.target.value);
+        }}
+        {...delegated}
       />
     </Label.Root>
   );

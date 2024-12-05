@@ -1,0 +1,24 @@
+.closebtn {
+  position: absolute;
+  right: 2rem;
+  top: 2rem;
+}
+
+.addbtn {
+  display: flex;
+  gap: 0.75rem;
+  font-variation-settings: var(--label-font-settings);
+}
+
+.addbtn,
+.closebtn {
+  background: transparent;
+  border: none;
+}
+
+@media (max-width: 600px) {
+  .closebtn {
+    top: 1rem;
+    right: 1rem;
+  }
+}

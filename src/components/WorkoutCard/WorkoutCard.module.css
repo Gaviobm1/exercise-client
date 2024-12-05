@@ -1,0 +1,32 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  box-shadow: inset -2px -2px 4px hsl(0deg 0% 0% / 0.33);
+  width: var(--workout-card-width);
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 3.125rem 4rem 4rem 4rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 2rem;
+}
+
+.icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+.grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  justify-items: center;
+}

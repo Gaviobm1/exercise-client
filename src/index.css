@@ -13,6 +13,20 @@
   --mobile-padding: 1rem;
   --tablet-padding: 2rem;
   --margin-padding: 3rem;
+  --primary-background: hsl(20deg 43% 97%);
+  --secondary-background: hsl(190deg 52% 69%);
+  --secondary-background-hover: hsl(190deg 52% 69%/0.2);
+  --icon-fill: hsl(185deg 82% 22%);
+  --icon-delete: hsl(339 77% 45%);
+  --border-radius-button: 4px;
+  --button-font-settings: "MONO" 1, "wght" 800;
+  --input-width: 100%;
+  --label-font-settings: "wght" 700;
+  --text-font-settings: "wght" 400;
+  --pill-padding: 1.125rem;
+  --layout-element-width: min(900px, 100%);
+  --workout-card-width: min(500px, 100%);
+  --exercise-pill-width: min(170px, 100%);
 }
 
 html[data-color-theme="dark"] {
@@ -92,6 +106,7 @@ body,
 #___gatsby,
 #gatsby-focus-wrapper {
   height: 100%;
+  background-color: var(--primary-background);
 }
 
 img,
@@ -127,11 +142,16 @@ input {
 #root,
 #__next {
   isolation: isolate;
+  font-family: "Recursive", sans-serif;
 }
 
 a {
   text-decoration: none;
   color: inherit;
+}
+
+button {
+  border: none;
 }
 
 @font-face {

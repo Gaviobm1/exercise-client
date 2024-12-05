@@ -2,6 +2,7 @@ import React from "react";
 import Form from "../Form";
 import Input from "../Input";
 import Cookies from "js-cookie";
+import { Link } from "react-router-dom";
 
 export default function LogInForm() {
   const emailRef = React.useRef<HTMLInputElement>(null);
@@ -23,11 +24,16 @@ export default function LogInForm() {
     const { token } = data;
     Cookies.set("token", token, { expires: 7 });
   }
+
+  function testLog() {
+    console.log("logged in!");
+  }
   return (
-    <Form>
+    <Form formAction={testLog}>
       <Input label="email" id="email" type="email" ref={emailRef} />
       <Input label="password" id="password" type="password" ref={passwordRef} />
       <button onClick={(e) => logIn(e)}>Log In</button>
+      <Link to="/register">No account? Register here!</Link>
     </Form>
   );
 }

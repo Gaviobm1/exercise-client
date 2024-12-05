@@ -1,0 +1,14 @@
+.wrapper {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  font-variation-settings: var(--label-font-settings);
+}
+
+.option {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid black;
+  padding: 0.4rem 1rem 0.5rem 0.5rem;
+  font-variation-settings: var(--text-font-settings);
+}

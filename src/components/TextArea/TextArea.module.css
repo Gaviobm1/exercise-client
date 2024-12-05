@@ -1,23 +1,15 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
   width: var(--input-width);
   font-variation-settings: var(--label-font-settings);
 }
 
-.input {
+.textarea {
   border: none;
   border-bottom: 2px solid black;
   padding: 0.5rem;
   background: transparent;
+  resize: none;
   font-variation-settings: var(--text-font-settings);
-}
-
-.radiocheck {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-variation-settings: var(--label-font-settings);
-  flex-direction: row-reverse;
 }

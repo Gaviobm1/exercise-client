@@ -1,0 +1,6 @@
+.btn {
+  background: transparent;
+  border: none;
+  overflow: hidden;
+  clip-path: circle();
+}

@@ -1,0 +1,22 @@
+.wrapper {
+  display: flex;
+  list-style-type: none;
+  gap: 1.5rem;
+}
+
+.itemwrap {
+  position: relative;
+  padding: 0.5rem 0.675rem 0.675rem 0.675rem;
+}
+
+.listitem {
+  position: relative;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.hoveredDiv {
+  position: absolute;
+  inset: 0;
+  background-color: var(--secondary-background);
+}

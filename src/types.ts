@@ -1,25 +1,61 @@
 import React, {
   ChangeEventHandler,
   InputHTMLAttributes,
+  MouseEventHandler,
   SelectHTMLAttributes,
   TextareaHTMLAttributes,
 } from "react";
 import { LucideIcon } from "lucide-react";
 
-export type ExerciseType = {
+type ExerciseData<T> = {
   id: number;
   name: string;
-  type: "strength" | "cardio";
   notes?: string;
-  reps?: number;
-  sets?: number;
-  time?: number;
-  distance?: number;
-  kcal?: number;
   easy?: boolean;
-  weight?: number;
-  multiple_weights?: boolean;
   workout_id: number;
+  exerciseData: T;
+};
+
+type StrengthData = {
+  type: "strength";
+  reps: number;
+  sets: number;
+  weight: number;
+  multiple_weights: boolean;
+};
+
+type CardioData = {
+  type: "cardio";
+  time: number;
+  distance: number;
+  kcal: number;
+};
+
+type StrengthFields = {
+  reps: number;
+  sets: number;
+  weight: number;
+  multiple_weights: boolean;
+};
+
+type CardioFields = {
+  time: number;
+  distance: number;
+  kcal: number;
+};
+
+type ValidConversionFields = ("weight" | "distance")[];
+
+export type MeasurementSystemType = {
+  fields: ValidConversionFields;
+  measurements: [string, string][];
+};
+
+export type ExerciseType = ExerciseData<StrengthData | CardioData>;
+
+export type DetailBodyProps = {
+  exerciseData: StrengthFields | CardioFields;
+  systemValues: MeasurementSystemType;
 };
 
 export type WorkoutType = {
@@ -38,12 +74,12 @@ export type UserType = {
 
 export type WorkoutCardType = {
   workout: WorkoutType;
-  exercises: ExerciseType[];
+  exercises: ExerciseData<StrengthData | CardioData>[];
 };
 
 export type ExerciseDetailType = {
   date: Date;
-  exercise: ExerciseType;
+  exercise: ExerciseData<StrengthData | CardioData>;
 };
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -87,4 +123,26 @@ export interface ExercisePillProps {
   exerciseId: number;
   type: string;
   easy?: boolean;
+}
+
+export interface GridHeaderProps {
+  title: string;
+  icons: LucideIcon[];
+}
+
+export interface DetailHeaderProps {
+  children: React.ReactNode;
+  Icon: LucideIcon;
+  btnText: string;
+  handleClick: MouseEventHandler<HTMLButtonElement>;
+}
+
+export interface DetailFieldProps {
+  keyStr: string;
+  valStr: string;
+}
+
+export interface ValueContextType {
+  toggle: boolean;
+  setToggle: React.Dispatch<React.SetStateAction<boolean>>;
 }

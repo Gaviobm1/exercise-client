@@ -1,97 +1,65 @@
+import { format } from "date-fns";
 import Cookies from "js-cookie";
-import { ExerciseType } from "../types";
-import { CircleUserRound } from "lucide-react";
 
-export const fetchUser = async (endpoint: string) => {
-  const response = await fetch(endpoint, {
-    headers: {
-      Authorization: `Bearer ${Cookies.get("token")}`,
-    },
-  });
-  return await response.json();
+export const formatToDateTitle = (date: Date) => {
+  return format(date, "dd/MM/yyyy");
 };
 
-export const exerciseTypeOptions = ["strength", "cardio"];
-export const easyOptions = [true, false];
-export const navLinks = [
-  {
-    href: "/",
-    text: "search",
-    slug: "searchlink",
-  },
-  {
-    href: "/",
-    text: "all workouts",
-    slug: "workoutslink",
-  },
-  {
-    href: "/",
-    text: "account",
-    slug: "accountlink",
-    Icon: CircleUserRound,
-  },
-];
+export const setBearerToken = (token: string, expiration: number = 7) => {
+  Cookies.set("Authorization", `Bearer ${token}`, { expires: expiration });
+};
 
-export const sampleExercises: ExerciseType[] = [
-  {
-    id: 1,
-    name: "Bench Press",
-    type: "strength",
-    notes: "Focus on form and slow descent.",
-    reps: 10,
-    sets: 3,
-    weight: 80,
-    multiple_weights: false,
-    workout_id: 101,
-  },
-  {
-    id: 2,
-    name: "Running",
-    type: "cardio",
-    notes: "Maintain a steady pace.",
-    time: 30, // in minutes
-    distance: 5, // in kilometers
-    kcal: 300,
-    easy: true,
-    workout_id: 102,
-  },
-  {
-    id: 3,
-    name: "Deadlift",
-    type: "strength",
-    reps: 5,
-    sets: 4,
-    weight: 100,
-    multiple_weights: false,
-    workout_id: 101,
-  },
-  {
-    id: 4,
-    name: "Cycling",
-    type: "cardio",
-    time: 45, // in minutes
-    distance: 20, // in kilometers
-    kcal: 400,
-    easy: false,
-    workout_id: 103,
-  },
-];
+export const getBearerToken = () => {
+  return Cookies.get("Authorization");
+};
 
-export const sampleExerciseDetails = [
-  {
-    date: new Date("2024-12-01"),
-    exercise: sampleExercises[0],
-  },
-  {
-    date: new Date("2024-12-01"),
-    exercise: sampleExercises[1],
-  },
-  {
-    date: new Date("2024-12-02"),
-    exercise: sampleExercises[2],
-  },
-  {
-    date: new Date("2024-12-02"),
-    exercise: sampleExercises[3],
-  },
-];
+export const removeUnderscore = (str: string) => {
+  if (str.includes("_")) {
+    const arr: string[] = [];
+    for (const char of str) {
+      if (char !== "_") {
+        arr.push(char);
+        continue;
+      }
+      arr.push(" ");
+    }
+    return arr.join("");
+  }
+  return str;
+};
+
+export const valueToString = (val: string | number | boolean): string => {
+  if (typeof val === "boolean") {
+    if (val) {
+      return "yes";
+    } else {
+      return "no";
+    }
+  }
+  return String(val);
+};
+
+export const weightConvert = (weight: number) => {
+  return weight * 2.205;
+};
+
+export const distanceConvert = (distance: number) => {
+  return distance / 1.609;
+};
+
+export const conversion = (type: string, current: boolean, value: number) => {
+  if (type === "weight") {
+    if (current) {
+      return value;
+    } else {
+      return weightConvert(value)?.toFixed(2);
+    }
+  }
+  if (type === "distance") {
+    if (current) {
+      return value;
+    } else {
+      return distanceConvert(value)?.toFixed(2);
+    }
+  }
+};

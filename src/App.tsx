@@ -1,5 +1,6 @@
-import WorkoutCard from "./components/WorkoutCard";
+import ExerciseDetail from "./components/ExerciseDetail";
+import { sampleExercises } from "./data";
 
 export default function App() {
-  return <WorkoutCard date={new Date()} />;
+  return <ExerciseDetail {...sampleExercises[1]} />;
 }

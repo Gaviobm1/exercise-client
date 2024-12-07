@@ -5,7 +5,7 @@ import Input from "../Input";
 import Select from "../Select";
 import Spacer from "../Spacer";
 import Button from "../Button";
-import { exerciseTypeOptions } from "../../helpers";
+import { exerciseTypeOptions } from "../../data";
 import RadioInput from "../RadioInput";
 
 export default function AddExercise() {

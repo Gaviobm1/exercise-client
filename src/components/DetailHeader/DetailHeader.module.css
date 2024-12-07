@@ -1,0 +1,14 @@
+.headerwrapper {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  border-bottom: solid 2px black;
+  padding: 1rem;
+}
+
+.titlewrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}

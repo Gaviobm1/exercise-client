@@ -1,0 +1,6 @@
+.headerWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: var(--switch-size);
+}

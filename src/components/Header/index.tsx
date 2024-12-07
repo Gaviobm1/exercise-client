@@ -1,6 +1,6 @@
 import DarkModeButton from "../DarkModeButton";
 import NavLinks from "../NavLinks";
-import { navLinks } from "../../helpers";
+import { navLinks } from "../../data";
 import styles from "./Header.module.css";
 
 export default function Header() {

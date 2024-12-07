@@ -1,0 +1,11 @@
+.wrapper {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+  width: var(--layout-element-width);
+}
+
+.iconwrapper {
+  display: flex;
+  gap: 1rem;
+}

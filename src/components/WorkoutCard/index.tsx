@@ -1,10 +1,13 @@
-import { format } from "date-fns";
+import { formatToDateTitle } from "../../helpers";
 import ExerciseNamePill from "../ExerciseNamePill";
 import { WorkoutCardType } from "../../types";
 import { CircleChevronRight } from "lucide-react";
 import styles from "./WorkoutCard.module.css";
-export default function WorkoutCard({ date }: { date: Date }) {
-  const dateStr = format(date, "dd/MM/yyyy");
+
+export default function WorkoutCard({ workout, exercises }: WorkoutCardType) {
+  const { date } = workout;
+  const dateStr = formatToDateTitle(date);
+
   return (
     <article className={styles.wrapper}>
       <header className={styles.header}>
@@ -12,15 +15,9 @@ export default function WorkoutCard({ date }: { date: Date }) {
         <CircleChevronRight className={styles.icon} />
       </header>
       <main className={styles.grid}>
-        <ExerciseNamePill name="threadmill" exerciseId={3} type="cardio" />
-        <ExerciseNamePill name="threadmill" exerciseId={3} type="cardio" />
-        <ExerciseNamePill name="threadmill" exerciseId={3} type="cardio" />
-        <ExerciseNamePill
-          name="threadmill"
-          exerciseId={3}
-          type="cardio"
-          easy={true}
-        />
+        {exercises.map(({ name, id, type }) => (
+          <ExerciseNamePill name={name} exerciseId={id} type={type} />
+        ))}
       </main>
     </article>
   );

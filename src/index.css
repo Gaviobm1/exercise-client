@@ -27,6 +27,10 @@
   --layout-element-width: min(900px, 100%);
   --workout-card-width: min(500px, 100%);
   --exercise-pill-width: min(170px, 100%);
+  --switch-size-large: 48px;
+  --switch-size-medium: 32px;
+  --switch-size-small: 16px;
+  --switch-size: 32px;
 }
 
 html[data-color-theme="dark"] {

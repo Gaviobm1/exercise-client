@@ -1,13 +1,13 @@
 import { ExerciseDetailType } from "../../types";
 import { formatISO } from "date-fns";
-import { exerciseTypeOptions } from "../../helpers";
+import { exerciseTypeOptions } from "../../data";
 import Form from "../Form";
 import Input from "../Input";
 import TextArea from "../TextArea";
 import Select from "../Select";
 import Button from "../Button";
 
-export default function ExerciseDetail({
+export default function EditExerciseDetail({
   exerciseData,
 }: {
   exerciseData: ExerciseDetailType;

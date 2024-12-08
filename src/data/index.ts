@@ -106,10 +106,47 @@ const exampleWorkout: WorkoutType = {
   date: new Date(),
 };
 
+const exampleWorkout2: WorkoutType = {
+  id: 2,
+  user_id: 4,
+  date: new Date(),
+};
+
+const exampleWorkout3: WorkoutType = {
+  id: 3,
+  user_id: 4,
+  date: new Date(),
+};
+
+const exampleWorkout4: WorkoutType = {
+  id: 4,
+  user_id: 4,
+  date: new Date(),
+};
+
 export const workoutData: WorkoutCardType = {
   workout: exampleWorkout,
   exercises: sampleExercises,
 };
+
+export const workOutArr: WorkoutCardType[] = [
+  {
+    workout: exampleWorkout,
+    exercises: sampleExercises,
+  },
+  {
+    workout: exampleWorkout2,
+    exercises: sampleExercises,
+  },
+  {
+    workout: exampleWorkout3,
+    exercises: sampleExercises,
+  },
+  {
+    workout: exampleWorkout4,
+    exercises: sampleExercises,
+  },
+];
 
 export const sampleFields: string[] = [
   "12 reps",

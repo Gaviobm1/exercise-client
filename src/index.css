@@ -18,6 +18,7 @@
   --secondary-background-hover: hsl(190deg 52% 69%/0.2);
   --icon-fill: hsl(185deg 82% 22%);
   --icon-delete: hsl(339 77% 45%);
+  --border-radius-card: 8px;
   --border-radius-button: 4px;
   --button-font-settings: "MONO" 1, "wght" 800;
   --input-width: 100%;
@@ -30,7 +31,7 @@
   --switch-size-large: 48px;
   --switch-size-medium: 32px;
   --switch-size-small: 16px;
-  --switch-size: 32px;
+  --switch-size: 24px;
 }
 
 html[data-color-theme="dark"] {

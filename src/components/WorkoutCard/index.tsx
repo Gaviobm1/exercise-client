@@ -15,8 +15,12 @@ export default function WorkoutCard({ workout, exercises }: WorkoutCardType) {
         <CircleChevronRight className={styles.icon} />
       </header>
       <main className={styles.grid}>
-        {exercises.map(({ name, id, type }) => (
-          <ExerciseNamePill name={name} exerciseId={id} type={type} />
+        {exercises.map(({ name, id, exerciseData }) => (
+          <ExerciseNamePill
+            name={name}
+            exerciseId={id}
+            type={exerciseData.type}
+          />
         ))}
       </main>
     </article>

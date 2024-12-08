@@ -1,6 +1,10 @@
-import ExerciseDetail from "./components/ExerciseDetail";
-import { sampleExercises } from "./data";
+import Home from "./components/Home";
+import WorkoutProvider from "./components/WorkoutsProvider";
 
 export default function App() {
-  return <ExerciseDetail {...sampleExercises[1]} />;
+  return (
+    <WorkoutProvider>
+      <Home />
+    </WorkoutProvider>
+  );
 }

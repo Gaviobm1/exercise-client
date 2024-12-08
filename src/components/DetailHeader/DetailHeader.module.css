@@ -1,5 +1,6 @@
 .headerwrapper {
-  display: flex;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
   gap: 2.5rem;
   align-items: center;
   font-size: clamp(1rem, 3vw, 1.5rem);

@@ -11,7 +11,7 @@ export default function DetailHeader({
   return (
     <header className={styles.headerwrapper}>
       <h3 className={styles.titlewrapper}>
-        <Icon />
+        <Icon size={32} />
         {children}
       </h3>
       <Button handleClick={handleClick}>{btnText}</Button>

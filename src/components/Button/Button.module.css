@@ -2,9 +2,8 @@
   background-color: var(--secondary-background);
   border: none;
   border-radius: var(--border-radius-button);
-  width: clamp(60px, 12vw, 190px);
-  height: clamp(20px, 5vh, 45px);
   font-size: clamp(1rem, 3vw, 1.5rem);
+  padding: 0.5rem 1rem;
   font-variation-settings: var(--button-font-settings);
   align-self: center;
 }

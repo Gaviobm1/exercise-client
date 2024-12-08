@@ -4,7 +4,7 @@
   gap: 2rem;
   box-shadow: inset -2px -2px 4px hsl(0deg 0% 0% / 0.33);
   width: var(--workout-card-width);
-  border-radius: 8px;
+  border-radius: var(--border-radius-card);
   overflow: hidden;
   padding: 3.125rem 4rem 4rem 4rem;
 }

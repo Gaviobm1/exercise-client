@@ -16,7 +16,7 @@ type ExerciseData<T> = {
   exerciseData: T;
 };
 
-type StrengthData = {
+export type StrengthData = {
   type: "strength";
   reps: number;
   sets: number;
@@ -24,7 +24,7 @@ type StrengthData = {
   multiple_weights: boolean;
 };
 
-type CardioData = {
+export type CardioData = {
   type: "cardio";
   time: number;
   distance: number;
@@ -55,7 +55,6 @@ export type ExerciseType = ExerciseData<StrengthData | CardioData>;
 
 export type DetailBodyProps = {
   exerciseData: StrengthFields | CardioFields;
-  systemValues: MeasurementSystemType;
 };
 
 export type WorkoutType = {
@@ -74,7 +73,7 @@ export type UserType = {
 
 export type WorkoutCardType = {
   workout: WorkoutType;
-  exercises: ExerciseData<StrengthData | CardioData>[];
+  exercises: ExerciseType[];
 };
 
 export type ExerciseDetailType = {
@@ -126,7 +125,7 @@ export interface ExercisePillProps {
 }
 
 export interface GridHeaderProps {
-  title: string;
+  children: React.ReactNode;
   icons: LucideIcon[];
 }
 

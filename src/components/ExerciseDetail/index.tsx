@@ -1,15 +1,17 @@
-import { ExerciseType, MeasurementSystemType } from "../../types";
+import { CardioData, StrengthData } from "../../types";
 import styles from "./ExerciseDetail.module.css";
 import { HeartPulse, Dumbbell } from "lucide-react";
 import DetailHeader from "../DetailHeader";
 import DetailBody from "../DetailBody";
 
-export default function ExerciseDetail({ name, exerciseData }: ExerciseType) {
+export default function ExerciseDetail({
+  name,
+  exerciseData,
+}: {
+  name: string;
+  exerciseData: StrengthData | CardioData;
+}) {
   const { type, ...rest } = exerciseData;
-  const switchables: MeasurementSystemType =
-    type === "strength"
-      ? { fields: ["weight"], measurements: [["kg", "lb"]] }
-      : { fields: ["distance"], measurements: [["km", "mi"]] };
   return (
     <article className={styles.wrapper}>
       <DetailHeader
@@ -19,7 +21,7 @@ export default function ExerciseDetail({ name, exerciseData }: ExerciseType) {
       >
         {name}
       </DetailHeader>
-      <DetailBody exerciseData={rest} systemValues={switchables} />
+      <DetailBody exerciseData={rest} />
     </article>
   );
 }

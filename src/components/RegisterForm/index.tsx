@@ -1,6 +1,7 @@
 import React, { FormEvent } from "react";
 import Form from "../Form";
 import Input from "../Input";
+import Button from "../Button";
 
 export default function RegisterForm() {
   const emailRef = React.useRef<HTMLInputElement>(null);
@@ -31,7 +32,7 @@ export default function RegisterForm() {
         type="password"
         ref={confirmPasswordRef}
       />
-      <button type="submit">Register</button>
+      <Button onClick={() => console.log("click")}>register</Button>
     </Form>
   );
 }

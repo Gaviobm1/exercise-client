@@ -5,7 +5,8 @@ import React, {
   SelectHTMLAttributes,
   TextareaHTMLAttributes,
 } from "react";
-import { LucideIcon } from "lucide-react";
+import { LucideIcon, LucideProps } from "lucide-react";
+import { LinkProps } from "react-router-dom";
 
 type ExerciseData<T> = {
   id: number;
@@ -100,9 +101,9 @@ export interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   handleChange?: ChangeEventHandler<HTMLSelectElement>;
 }
 
-export interface ButtonProps {
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
-  handleClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export interface NavProps {
@@ -144,4 +145,16 @@ export interface DetailFieldProps {
 export interface ValueContextType {
   toggle: boolean;
   setToggle: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export interface IconButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  Icon: LucideIcon;
+  iconProps?: LucideProps;
+}
+
+export interface AnimatedLinkProps
+  extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+  children: React.ReactNode;
+  linkProps: LinkProps;
 }

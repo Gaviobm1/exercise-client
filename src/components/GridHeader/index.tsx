@@ -1,4 +1,5 @@
 import styles from "./GridHeader.module.css";
+import IconButton from "../IconButton";
 import { GridHeaderProps } from "../../types";
 
 export default function GridHeader({ children, icons }: GridHeaderProps) {
@@ -7,7 +8,7 @@ export default function GridHeader({ children, icons }: GridHeaderProps) {
       <h2>{children}</h2>
       <div className={styles.iconwrapper}>
         {icons.map((Icon) => (
-          <Icon />
+          <IconButton Icon={Icon} />
         ))}
       </div>
     </header>

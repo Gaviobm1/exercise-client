@@ -1,9 +1,9 @@
 import styles from "./Button.module.css";
 import { ButtonProps } from "../../types";
 
-export default function Button({ children, handleClick }: ButtonProps) {
+export default function Button({ children, ...delegated }: ButtonProps) {
   return (
-    <button onClick={handleClick} className={styles.button}>
+    <button className={styles.button} {...delegated}>
       {children}
     </button>
   );

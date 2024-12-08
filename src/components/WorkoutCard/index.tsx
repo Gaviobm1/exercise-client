@@ -2,6 +2,7 @@ import { formatToDateTitle } from "../../helpers";
 import ExerciseNamePill from "../ExerciseNamePill";
 import { WorkoutCardType } from "../../types";
 import { CircleChevronRight } from "lucide-react";
+import IconButton from "../IconButton";
 import styles from "./WorkoutCard.module.css";
 
 export default function WorkoutCard({ workout, exercises }: WorkoutCardType) {
@@ -12,7 +13,7 @@ export default function WorkoutCard({ workout, exercises }: WorkoutCardType) {
     <article className={styles.wrapper}>
       <header className={styles.header}>
         <h1 className={styles.title}>{dateStr}</h1>
-        <CircleChevronRight className={styles.icon} />
+        <IconButton Icon={CircleChevronRight} iconProps={{ size: 32 }} />
       </header>
       <main className={styles.grid}>
         {exercises.map(({ name, id, exerciseData }) => (

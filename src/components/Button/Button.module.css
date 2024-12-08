@@ -6,4 +6,5 @@
   padding: 0.5rem 1rem;
   font-variation-settings: var(--button-font-settings);
   align-self: center;
+  outline-offset: var(--outline-offset);
 }

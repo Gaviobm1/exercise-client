@@ -1,6 +1,9 @@
 .btn {
   background: transparent;
   border: none;
-  overflow: hidden;
   outline-offset: var(--outline-offset);
+}
+
+.btn:hover {
+  cursor: pointer;
 }

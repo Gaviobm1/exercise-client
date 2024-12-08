@@ -25,13 +25,14 @@
   --label-font-settings: "wght" 700;
   --text-font-settings: "wght" 400;
   --pill-padding: 1.125rem;
-  --layout-element-width: min(900px, 100%);
-  --workout-card-width: min(500px, 100%);
+  --layout-element-width: min(1200px, 100%);
+  --workout-card-width: min(600px, 100%);
   --exercise-pill-width: min(170px, 100%);
   --switch-size-large: 48px;
   --switch-size-medium: 32px;
   --switch-size-small: 16px;
   --switch-size: 24px;
+  --outline-offset: 0.5rem;
 }
 
 html[data-color-theme="dark"] {

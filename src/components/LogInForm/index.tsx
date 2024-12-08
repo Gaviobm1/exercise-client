@@ -1,8 +1,9 @@
 import React from "react";
 import Form from "../Form";
 import Input from "../Input";
+import Button from "../Button";
 import Cookies from "js-cookie";
-import { Link } from "react-router-dom";
+import AnimatedLink from "../AnimatedLink";
 
 export default function LogInForm() {
   const emailRef = React.useRef<HTMLInputElement>(null);
@@ -32,8 +33,13 @@ export default function LogInForm() {
     <Form formAction={testLog}>
       <Input label="email" id="email" type="email" ref={emailRef} />
       <Input label="password" id="password" type="password" ref={passwordRef} />
-      <button onClick={(e) => logIn(e)}>Log In</button>
-      <Link to="/register">No account? Register here!</Link>
+      <Button onClick={() => console.log("click")}>log in</Button>
+      <AnimatedLink linkProps={{ to: "/register" }}>
+        no account? register here!
+      </AnimatedLink>
+      <AnimatedLink linkProps={{ to: "/register" }}>
+        forgot password
+      </AnimatedLink>
     </Form>
   );
 }

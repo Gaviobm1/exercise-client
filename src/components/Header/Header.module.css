@@ -1,11 +1,44 @@
 .wrapper {
   display: flex;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(8px);
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+  z-index: 10000;
+}
+
+.header {
+  display: flex;
   justify-content: space-between;
-  align-items: center;
   width: var(--layout-element-width);
+  align-items: center;
 }
 
 .controls {
   display: flex;
   gap: 1rem;
+}
+
+.mobileControls {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .header h1 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .header h1 {
+    font-size: 1rem;
+  }
+  .controls {
+    display: none;
+  }
+  .mobileControls {
+    display: block;
+  }
 }

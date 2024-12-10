@@ -1,16 +1,17 @@
 import React from "react";
-import { workOutArr } from "../../data";
+import { WorkoutCardType, WorkoutsProviderProps } from "../../types";
 
-export const WorkoutContext = React.createContext(workOutArr);
+export const WorkoutsContext = React.createContext<WorkoutCardType[] | null>(
+  null
+);
 
-export default function WorkoutProvider({
+export default function WorkoutsProvider({
   children,
-}: {
-  children: React.ReactNode;
-}) {
+  workouts,
+}: WorkoutsProviderProps) {
   return (
-    <WorkoutContext.Provider value={workOutArr}>
+    <WorkoutsContext.Provider value={workouts}>
       {children}
-    </WorkoutContext.Provider>
+    </WorkoutsContext.Provider>
   );
 }

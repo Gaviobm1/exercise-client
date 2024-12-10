@@ -4,29 +4,25 @@
   gap: 1.125rem;
 }
 
-.hoverWrapper {
-  position: relative;
-}
-
-.motionBox {
-  position: absolute;
-  inset: 0;
-  border: 2px solid black;
-  border-radius: var(--border-radius-card);
-}
-
 @media (max-width: 600px) {
   .wrapper {
     border-bottom: none;
     padding-top: calc(var(--mobile-padding) / 3);
     padding-bottom: calc(var(--mobile-padding) / 3);
-    width: 100%;
+    width: auto;
     display: flex;
+    gap: 1rem;
     overflow-x: scroll;
     scrollbar-width: none;
     overscroll-behavior: contain;
     scroll-snap-type: x mandatory;
     padding-left: 2rem;
     padding-right: 2rem;
+    margin-left: calc(var(--mobile-padding) * -2);
+    margin-right: calc(var(--mobile-padding) * -2);
+    & a,
+    article {
+      scroll-snap-align: center;
+    }
   }
 }

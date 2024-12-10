@@ -1,21 +1,26 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import styles from "./Modal.module.css";
-import { Plus, X } from "react-feather";
+import { X } from "react-feather";
 
-export default function Modal({ children }: { children: React.ReactNode }) {
+export default function Modal({
+  children,
+  btnText,
+}: {
+  children: React.ReactNode;
+  btnText: string;
+}) {
   return (
     <Dialog.Root>
-      <Dialog.Trigger>
-        <Plus />
-      </Dialog.Trigger>
+      <Dialog.Trigger className={styles.button}>{btnText}</Dialog.Trigger>
       <Dialog.Portal>
-        <Dialog.Overlay className={styles.overlay} />
-        <Dialog.Content className={styles.content}>
-          <Dialog.Close className={styles.close}>
-            <X />
-          </Dialog.Close>
-          <div className={styles.wrapper}>{children}</div>
-        </Dialog.Content>
+        <Dialog.Overlay className={styles.overlay}>
+          <Dialog.Content className={styles.content}>
+            <Dialog.Close className={styles.close}>
+              <X />
+            </Dialog.Close>
+            {children}
+          </Dialog.Content>
+        </Dialog.Overlay>
       </Dialog.Portal>
     </Dialog.Root>
   );

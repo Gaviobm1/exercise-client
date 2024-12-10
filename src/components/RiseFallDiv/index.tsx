@@ -1,10 +1,11 @@
 import { AnimatePresence, motion } from "motion/react";
 import { RiseFallProps } from "../../types";
+import styles from "./RiseFallDiv.module.css";
 
 export default function RiseFallDiv({ children, direction }: RiseFallProps) {
   const riseFallVariants = {
-    rise: { y: 30 },
-    fall: { y: -30 },
+    rise: { y: 40 },
+    fall: { y: -40 },
   };
 
   return (
@@ -15,7 +16,8 @@ export default function RiseFallDiv({ children, direction }: RiseFallProps) {
         initial={riseFallVariants[direction]}
         animate={{ y: 0 }}
         exit={riseFallVariants[direction]}
-        transition={{ type: "spring", stiffness: 400, damping: 35 }}
+        transition={{ type: "spring", stiffness: 600, damping: 50 }}
+        className={styles.wrapper}
       >
         {children}
       </motion.div>

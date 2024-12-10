@@ -7,4 +7,12 @@
   font-variation-settings: var(--button-font-settings);
   align-self: center;
   outline-offset: var(--outline-offset);
+  transition: font-variation-settings 400ms ease-in-out;
+  color: var(--font-color);
+}
+
+.button:hover {
+  cursor: pointer;
+  font-variation-settings: var(--button-hover-font-settings);
+  transition: font-variation-settings 200ms ease-in-out;
 }

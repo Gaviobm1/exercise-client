@@ -1,7 +1,6 @@
 import React, {
   ChangeEventHandler,
   InputHTMLAttributes,
-  MouseEventHandler,
   SelectHTMLAttributes,
   TextareaHTMLAttributes,
 } from "react";
@@ -133,8 +132,6 @@ export interface GridHeaderProps {
 export interface DetailHeaderProps {
   children: React.ReactNode;
   Icon: LucideIcon;
-  btnText: string;
-  handleClick: MouseEventHandler<HTMLButtonElement>;
 }
 
 export interface DetailFieldProps {
@@ -153,8 +150,31 @@ export interface IconButtonProps
   iconProps?: LucideProps;
 }
 
+export interface FormProps extends React.FormHTMLAttributes<HTMLFormElement> {
+  children: React.ReactNode;
+}
+
 export interface AnimatedLinkProps
   extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   children: React.ReactNode;
   linkProps: LinkProps;
+}
+
+export interface WorkoutsProviderProps {
+  children: React.ReactNode;
+  workouts: WorkoutCardType[];
+}
+
+export interface ExerciseProviderProps {
+  children: React.ReactNode;
+  exercise: ExerciseType;
+}
+
+export interface WorkoutProviderProps {
+  children: React.ReactNode;
+  workout: WorkoutType;
+}
+
+export interface GridWrapperProps extends React.AllHTMLAttributes<HTMLElement> {
+  children: React.ReactNode;
 }

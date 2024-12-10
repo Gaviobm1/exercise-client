@@ -12,6 +12,7 @@
   padding: 0.5rem;
   background: transparent;
   font-variation-settings: var(--text-font-settings);
+  outline-offset: var(--outline-offset);
 }
 
 .radiocheck {
@@ -20,4 +21,5 @@
   gap: 0.75rem;
   font-variation-settings: var(--label-font-settings);
   flex-direction: row-reverse;
+  margin-right: auto;
 }

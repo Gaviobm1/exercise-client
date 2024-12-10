@@ -1,15 +1,9 @@
-import React, { FormEventHandler } from "react";
 import styles from "./Form.module.css";
+import { FormProps } from "react-router-dom";
 
-export default function Form({
-  children,
-  formAction,
-}: {
-  children: React.ReactNode;
-  formAction: FormEventHandler<HTMLFormElement>;
-}) {
+export default function Form({ children, ...delegated }: FormProps) {
   return (
-    <form className={styles.wrapper} onSubmit={formAction}>
+    <form className={styles.wrapper} {...delegated}>
       {children}
     </form>
   );

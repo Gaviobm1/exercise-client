@@ -2,6 +2,7 @@
   background: transparent;
   border: none;
   outline-offset: var(--outline-offset);
+  color: var(--font-color);
 }
 
 .btn:hover {

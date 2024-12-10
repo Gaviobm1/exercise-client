@@ -1,5 +1,7 @@
 import { ExerciseType } from "../../types";
 import ExerciseDetail from "../ExerciseDetail";
+import ExerciseProvider from "../ExerciseProvider";
+import GridWrapper from "../GridWrapper";
 
 export default function ExerciseGrid({
   exercises,
@@ -7,10 +9,12 @@ export default function ExerciseGrid({
   exercises: ExerciseType[];
 }) {
   return (
-    <div>
-      {exercises.map(({ name, exerciseData }) => (
-        <ExerciseDetail name={name} exerciseData={exerciseData} />
+    <GridWrapper>
+      {exercises.map((exercise) => (
+        <ExerciseProvider exercise={exercise}>
+          <ExerciseDetail />
+        </ExerciseProvider>
       ))}
-    </div>
+    </GridWrapper>
   );
 }

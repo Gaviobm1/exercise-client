@@ -4,6 +4,7 @@ import { WorkoutCardType } from "../../types";
 import { CircleChevronRight } from "lucide-react";
 import IconButton from "../IconButton";
 import styles from "./WorkoutCard.module.css";
+import { Link } from "react-router-dom";
 
 export default function WorkoutCard({ workout, exercises }: WorkoutCardType) {
   const { date } = workout;
@@ -13,7 +14,10 @@ export default function WorkoutCard({ workout, exercises }: WorkoutCardType) {
     <article className={styles.wrapper}>
       <header className={styles.header}>
         <h1 className={styles.title}>{dateStr}</h1>
-        <IconButton Icon={CircleChevronRight} iconProps={{ size: 32 }} />
+        <Link to={`workout/3`}>
+          {" "}
+          <IconButton Icon={CircleChevronRight} iconProps={{ size: 32 }} />
+        </Link>
       </header>
       <main className={styles.grid}>
         {exercises.map(({ name, id, exerciseData }) => (

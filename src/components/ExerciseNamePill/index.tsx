@@ -7,9 +7,9 @@ export default function ExerciseNamePill({ name, type }: ExercisePillProps) {
   return (
     <button className={styles.button}>
       {type === "cardio" ? (
-        <HeartPulse className={styles.heart} />
+        <HeartPulse className={styles.icon} />
       ) : (
-        <Dumbbell className={styles.dumbbell} />
+        <Dumbbell className={styles.icon} />
       )}
       <span className={styles.text}>{name}</span>
     </button>

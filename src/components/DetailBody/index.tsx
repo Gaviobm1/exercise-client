@@ -1,10 +1,12 @@
 import styles from "./DetailBody.module.css";
-import { DetailBodyProps } from "../../types";
 import { removeUnderscore, valueToString } from "../../helpers";
 import DetailField from "../DetailField";
 import ValueProvider from "../ValueProvider";
+import useExerciseContext from "../../hooks/useExerciseContext";
 
-export default function DetailBody({ exerciseData }: DetailBodyProps) {
+export default function DetailBody() {
+  const exercise = useExerciseContext();
+  const { exerciseData } = exercise;
   const keys = Object.keys(exerciseData);
   const values = Object.values(exerciseData);
 

@@ -20,13 +20,14 @@
   --icon-delete: hsl(339 77% 45%);
   --border-radius-card: 8px;
   --border-radius-button: 4px;
-  --button-font-settings: "MONO" 1, "wght" 800;
+  --button-font-settings: "MONO" 1, "wght" 800, "CASL" 0, "slnt" 0;
+  --button-hover-font-settings: "MONO" 1, "wght" 800, "CASL" 1, "slnt" -10;
   --input-width: 100%;
   --label-font-settings: "wght" 700;
   --text-font-settings: "wght" 400;
   --pill-padding: 1.125rem;
-  --layout-element-width: min(1200px, 100%);
-  --workout-card-width: min(600px, 100%);
+  --layout-element-width: min(1200px, 90%);
+  --workout-card-width: min(450px, 90%);
   --exercise-pill-width: min(170px, 100%);
   --switch-size-large: 48px;
   --switch-size-medium: 32px;
@@ -35,7 +36,7 @@
   --outline-offset: 0.5rem;
 }
 
-html[data-color-theme="dark"] {
+html[data-theme="dark"] {
   --background-wrapper: hsl(0deg 20% 7%);
   --hero-background: linear-gradient(
       330deg,
@@ -60,10 +61,16 @@ html[data-color-theme="dark"] {
   --button-text: hsl(0deg 100% 0%);
   --border: 2px solid hsl(0deg 100% 100%);
   --picture-blur: blur(10px);
+  --font-color: hsl(0deg 100% 100%);
+  --background-color: hsl(0deg 100% 0%);
+  --primary-background: hsl(294deg 47% 32%);
+  --secondary-background: hsl(333deg 66% 20%);
 }
 
-html[data-color-theme="light"] {
+html[data-theme="light"] {
   --color: hsl(0deg 100% 0%);
+  --primary-background: hsl(20deg 43% 97%);
+  --secondary-background: hsl(190deg 52% 69%);
   --box-shadow: 4px 8px 4px hsl(0deg 100% 0%/ 0.3);
   --border: 1px solid hsl(0deg 100% 0%);
   --border-radius: 0.5rem;
@@ -89,6 +96,8 @@ html[data-color-theme="light"] {
   --button-text: hsl(0deg 100% 100%);
   --border: 2px solid hsl(0deg 100% 0%);
   --picture-blur: none;
+  --font-color: hsl(0deg 100% 0%);
+  --background-color: hsl(0deg 100% 100%);
 }
 
 *,
@@ -105,6 +114,8 @@ html[data-color-theme="light"] {
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  color: var(--font-color);
+  background-color: var(--background-color);
 }
 
 html,

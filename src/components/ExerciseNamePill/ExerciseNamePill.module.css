@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 0.75rem;
-  width: fit-content;
+  width: 100%;
   padding: 0rem 0.5rem;
   height: 50px;
   background-color: var(--secondary-background);
@@ -12,22 +12,20 @@
   outline-offset: 0.5rem;
 }
 
-.heart,
-.dumbbell {
+.icon {
   justify-self: center;
   color: var(--icon-fill);
   width: 2rem;
   height: 2rem;
-}
-
-.dumbbell {
-  transform: rotate(90deg);
+  color: var(--font-color);
 }
 
 .text {
   justify-self: self-start;
   align-self: center;
   margin-top: -3px;
+  white-space: nowrap;
+  color: var(--font-color);
 }
 
 .trash {

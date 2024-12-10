@@ -1,5 +1,6 @@
 import { format } from "date-fns";
 import Cookies from "js-cookie";
+import { ExerciseType, WorkoutCardType } from "../types";
 
 export const formatToDateTitle = (date: Date) => {
   return format(date, "dd/MM/yyyy");
@@ -61,5 +62,31 @@ export const conversion = (type: string, current: boolean, value: number) => {
     } else {
       return distanceConvert(value)?.toFixed(2);
     }
+  }
+};
+
+export const getWorkout = (
+  workouts: WorkoutCardType[],
+  id: number
+): WorkoutCardType => {
+  for (const workout of workouts) {
+    if (id === workout.workout.id) {
+      return workout;
+    }
+  }
+  throw new Error("Workout not found");
+};
+
+export const getExerciseFields = (exercise: ExerciseType) => {
+  const { type } = exercise.exerciseData;
+  switch (type) {
+    case "strength":
+      const { sets, reps, weight, multiple_weights } = exercise.exerciseData;
+      return { sets, reps, weight, multiple_weights };
+      break;
+    case "cardio":
+      const { time, distance, kcal } = exercise.exerciseData;
+      return { time, distance, kcal };
+      break;
   }
 };

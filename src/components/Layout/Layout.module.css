@@ -3,7 +3,5 @@
   flex-direction: column;
   gap: 2rem;
   margin: auto;
-  padding: 1.75rem;
-  width: var(--layout-element-width);
   height: 100%;
 }

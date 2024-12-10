@@ -1,31 +1,15 @@
-import React from "react";
 import WorkoutCard from "../WorkoutCard";
-import styles from "./WorkoutGrid.module.css";
-import { motion } from "motion/react";
-import { WorkoutContext } from "../WorkoutsProvider";
+import GridWrapper from "../GridWrapper";
+import useWorkoutsContext from "../../hooks/useWorkoutsContext";
 
 export default function WorkoutGrid() {
-  const workoutData = React.useContext(WorkoutContext);
-  const [current, setCurrent] = React.useState<number | null>(null);
-  const id = React.useId();
+  const workoutData = useWorkoutsContext();
 
   return (
-    <main className={styles.wrapper} onMouseLeave={() => setCurrent(null)}>
+    <GridWrapper>
       {workoutData.map(({ workout, exercises }) => {
-        const slug = workout.id;
-        return (
-          <span
-            className={styles.hoverWrapper}
-            key={workout.id}
-            onMouseEnter={() => setCurrent(slug)}
-          >
-            {current === slug && (
-              <motion.div className={styles.motionBox} layoutId={id} />
-            )}
-            <WorkoutCard workout={workout} exercises={exercises} />
-          </span>
-        );
+        return <WorkoutCard workout={workout} exercises={exercises} />;
       })}
-    </main>
+    </GridWrapper>
   );
 }

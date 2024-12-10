@@ -1,15 +1,23 @@
-import { WorkoutCardType } from "../../types";
 import styles from "./WorkoutDetail.module.css";
-import { formatToDateTitle } from "../../helpers";
+import { formatToDateTitle, getWorkout } from "../../helpers";
 import ExerciseGrid from "../ExerciseGrid";
+import { useParams } from "react-router-dom";
+import useWorkoutsContext from "../../hooks/useWorkoutsContext";
+import WorkoutProvider from "../WorkoutProvider";
 
-export default function WorkoutDetail({ workout, exercises }: WorkoutCardType) {
+export default function WorkoutDetail() {
+  const workouts = useWorkoutsContext();
+  const { workoutId } = useParams();
+  const workoutData = getWorkout(workouts, Number(workoutId));
+  const { workout, exercises } = workoutData;
   const { date } = workout;
   const dateStr = formatToDateTitle(date);
   return (
     <main className={styles.wrapper}>
       <h1>{dateStr}</h1>
-      <ExerciseGrid exercises={exercises} />
+      <WorkoutProvider workout={workout}>
+        <ExerciseGrid exercises={exercises} />
+      </WorkoutProvider>
     </main>
   );
 }

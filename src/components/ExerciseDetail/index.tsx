@@ -1,27 +1,19 @@
-import { CardioData, StrengthData } from "../../types";
 import styles from "./ExerciseDetail.module.css";
 import { HeartPulse, Dumbbell } from "lucide-react";
 import DetailHeader from "../DetailHeader";
 import DetailBody from "../DetailBody";
+import useExerciseContext from "../../hooks/useExerciseContext";
 
-export default function ExerciseDetail({
-  name,
-  exerciseData,
-}: {
-  name: string;
-  exerciseData: StrengthData | CardioData;
-}) {
-  const { type, ...rest } = exerciseData;
+export default function ExerciseDetail() {
+  const exercise = useExerciseContext();
+  const { name, exerciseData } = exercise;
+  const { type } = exerciseData;
   return (
     <article className={styles.wrapper}>
-      <DetailHeader
-        Icon={type === "cardio" ? HeartPulse : Dumbbell}
-        btnText="edit"
-        handleClick={() => console.log("clicked")}
-      >
+      <DetailHeader Icon={type === "cardio" ? HeartPulse : Dumbbell}>
         {name}
       </DetailHeader>
-      <DetailBody exerciseData={rest} />
+      <DetailBody />
     </article>
   );
 }

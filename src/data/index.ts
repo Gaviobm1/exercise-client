@@ -23,6 +23,20 @@ export const navLinks = [
   },
 ];
 
+export const dummyExercise = {
+  id: 2,
+  name: "Running",
+  notes: "Maintain a steady pace.",
+  easy: true,
+  workout_id: 1,
+  exerciseData: {
+    type: "cardio",
+    time: 30,
+    distance: 5,
+    kcal: 300,
+  },
+};
+
 export const headerData = {
   title: "recent workouts",
   icons: [DiamondPlus, Filter],

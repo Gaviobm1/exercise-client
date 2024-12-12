@@ -20,12 +20,8 @@ export default function WorkoutCard({ workout, exercises }: WorkoutCardType) {
         </Link>
       </header>
       <main className={styles.grid}>
-        {exercises.map(({ name, id, exerciseData }) => (
-          <ExerciseNamePill
-            name={name}
-            exerciseId={id}
-            type={exerciseData.type}
-          />
+        {exercises.map(({ name, id, type }) => (
+          <ExerciseNamePill name={name} exerciseId={id} type={type} />
         ))}
       </main>
     </article>

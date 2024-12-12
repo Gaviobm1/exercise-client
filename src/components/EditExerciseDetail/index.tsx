@@ -12,8 +12,7 @@ import useWorkoutContext from "../../hooks/useWorkoutContext";
 export default function EditExerciseDetail() {
   const workout = useWorkoutContext();
   const exercise = useExerciseContext();
-  const { name, notes, easy } = exercise;
-  const { type } = exercise.exerciseData;
+  const { name, notes, easy, type } = exercise;
   const { date } = workout;
   const exerciseFields = getExerciseFields(exercise);
   const dateString = formatISO(date, { representation: "date" });

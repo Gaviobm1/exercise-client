@@ -7,12 +7,9 @@ import LogInForm from "./components/LogInForm/index.tsx";
 import RegisterForm from "./components/RegisterForm/index.tsx";
 import Layout from "./components/Layout/index.tsx";
 import WorkoutDetail from "./components/WorkoutDetail/index.tsx";
-import Cookies from "js-cookie";
+import AddWorkoutWrapper from "./components/AddWorkoutWrapper/index.tsx";
 
 export default function App() {
-  const savedTheme = Cookies.get("color-theme") || "light";
-  document.documentElement.setAttribute("data-theme", savedTheme);
-
   return (
     <WorkoutsProvider workouts={workOutArr}>
       <BrowserRouter>
@@ -27,6 +24,7 @@ export default function App() {
               path="user/:userId/workout/:workoutId"
               element={<WorkoutDetail />}
             />
+            <Route path="addworkout" element={<AddWorkoutWrapper />} />
           </Route>
         </Routes>
       </BrowserRouter>

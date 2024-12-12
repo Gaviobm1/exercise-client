@@ -10,7 +10,7 @@ export default function DarkModeButton() {
   });
 
   React.useEffect(() => {
-    const theme = isDark === "light" ? "dark" : "light";
+    const theme = isDark === "light" ? "light" : "dark";
     document.documentElement.setAttribute("data-theme", theme);
     Cookies.set("color-theme", theme, { expires: 1000 });
   }, [isDark]);

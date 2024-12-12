@@ -16,9 +16,9 @@ export default function Select({
       <select
         name={id}
         id={id}
-        {...delegated}
         className={styles.option}
         onChange={handleChange}
+        {...delegated}
       >
         {options.map((type) => (
           <option value={type} selected={currentSelected === type} key={type}>

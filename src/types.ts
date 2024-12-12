@@ -2,6 +2,7 @@ import React, {
   ChangeEventHandler,
   InputHTMLAttributes,
   SelectHTMLAttributes,
+  SetStateAction,
   TextareaHTMLAttributes,
 } from "react";
 import { LucideIcon, LucideProps } from "lucide-react";
@@ -13,7 +14,17 @@ type ExerciseData<T> = {
   notes?: string;
   easy?: boolean;
   workout_id: number;
+  type: "strength" | "cardio";
   exerciseData: T;
+};
+
+type ExerciseFormFields<T> = {
+  name: string;
+  notes?: string;
+  easy: boolean;
+  type: "strength" | "cardio";
+  slug: string;
+  exerciseData?: T;
 };
 
 export type StrengthData = {
@@ -52,6 +63,9 @@ export type MeasurementSystemType = {
 };
 
 export type ExerciseType = ExerciseData<StrengthData | CardioData>;
+export type ExerciseFormData = ExerciseFormFields<
+  StrengthFields | CardioFields
+>;
 
 export type DetailBodyProps = {
   exerciseData: StrengthFields | CardioFields;
@@ -126,7 +140,7 @@ export interface ExercisePillProps {
 
 export interface GridHeaderProps {
   children: React.ReactNode;
-  icons: LucideIcon[];
+  icons: { icon: LucideIcon; link: string }[];
 }
 
 export interface DetailHeaderProps {
@@ -170,6 +184,11 @@ export interface ExerciseProviderProps {
   exercise: ExerciseType;
 }
 
+export interface ExercisesContextProps {
+  exercises: ExerciseFormData[] | [];
+  setExercises: React.Dispatch<SetStateAction<ExerciseFormData[] | []>>;
+}
+
 export interface WorkoutProviderProps {
   children: React.ReactNode;
   workout: WorkoutType;
@@ -177,4 +196,23 @@ export interface WorkoutProviderProps {
 
 export interface GridWrapperProps extends React.AllHTMLAttributes<HTMLElement> {
   children: React.ReactNode;
+}
+
+export interface ExerciseTabProps {
+  children: React.ReactNode;
+  type: "strength" | "cardio";
+  slug: string;
+}
+
+export interface ModalProps {
+  children: React.ReactNode;
+  btnText?: string;
+  type?: string;
+  Icon?: LucideIcon;
+}
+
+export interface WarningModalProps {
+  children: React.ReactNode;
+  btnContent: React.ReactNode;
+  slug: string;
 }

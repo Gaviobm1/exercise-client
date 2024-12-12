@@ -26,14 +26,11 @@ export default function LogInForm() {
     Cookies.set("token", token, { expires: 7 });
   }
 
-  function testLog() {
-    console.log("logged in!");
-  }
   return (
-    <Form formAction={testLog}>
+    <Form>
       <Input label="email" id="email" type="email" ref={emailRef} />
       <Input label="password" id="password" type="password" ref={passwordRef} />
-      <Button onClick={() => console.log("click")}>log in</Button>
+      <Button>log in</Button>
       <AnimatedLink linkProps={{ to: "/register" }}>
         no account? register here!
       </AnimatedLink>

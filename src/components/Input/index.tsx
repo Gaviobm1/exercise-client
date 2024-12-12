@@ -20,6 +20,7 @@ const Input = React.forwardRef(function Input(
       {label}
       <input
         id={id}
+        name={id}
         className={styles.input}
         ref={ref}
         value={value}

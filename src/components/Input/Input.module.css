@@ -8,7 +8,8 @@
 
 .input {
   border: none;
-  border-bottom: 2px solid black;
+  color: var(--font-color);
+  border-bottom: 2px solid var(--font-color);
   padding: 0.5rem;
   background: transparent;
   font-variation-settings: var(--text-font-settings);

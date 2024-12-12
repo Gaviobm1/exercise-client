@@ -3,7 +3,6 @@ import { Dumbbell, HeartPulse } from "lucide-react";
 import { ExercisePillProps } from "../../types";
 
 export default function ExerciseNamePill({ name, type }: ExercisePillProps) {
-  console.log(type);
   return (
     <button className={styles.button}>
       {type === "cardio" ? (

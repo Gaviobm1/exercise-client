@@ -10,13 +10,8 @@ export default function RegisterForm() {
   const passwordRef = React.useRef<HTMLInputElement>(null);
   const confirmPasswordRef = React.useRef<HTMLInputElement>(null);
 
-  function logIn(e: FormEvent) {
-    e.preventDefault();
-    console.log("logged in!");
-  }
-
   return (
-    <Form formAction={(e) => logIn(e)}>
+    <Form>
       <Input
         label="first name"
         id="first_name"
@@ -32,7 +27,7 @@ export default function RegisterForm() {
         type="password"
         ref={confirmPasswordRef}
       />
-      <Button onClick={() => console.log("click")}>register</Button>
+      <Button>register</Button>
     </Form>
   );
 }

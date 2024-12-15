@@ -13,13 +13,15 @@ type ExerciseData<T> = {
   name: string;
   notes?: string;
   easy?: boolean;
-  workout_id: number;
+  workoutId: number;
+  slug: string;
   type: "strength" | "cardio";
   exerciseData: T;
 };
 
 type ExerciseFormFields<T> = {
   name: string;
+  workoutId: number;
   notes?: string;
   easy: boolean;
   type: "strength" | "cardio";
@@ -75,6 +77,12 @@ export type WorkoutType = {
   id: number;
   user_id: number;
   date: Date;
+};
+
+export type AllWorkoutsQuery = {
+  workouts: WorkoutType[] | [];
+  error: Error;
+  isLoading: boolean;
 };
 
 export type UserType = {
@@ -140,7 +148,7 @@ export interface ExercisePillProps {
 
 export interface GridHeaderProps {
   children: React.ReactNode;
-  icons: { icon: LucideIcon; link: string }[];
+  icons: { icon: LucideIcon; link: string; slug: string }[];
 }
 
 export interface DetailHeaderProps {
@@ -185,8 +193,8 @@ export interface ExerciseProviderProps {
 }
 
 export interface ExercisesContextProps {
-  exercises: ExerciseFormData[] | [];
-  setExercises: React.Dispatch<SetStateAction<ExerciseFormData[] | []>>;
+  exercises: ExerciseType[] | [];
+  setExercises: React.Dispatch<SetStateAction<ExerciseType[] | []>>;
 }
 
 export interface WorkoutProviderProps {

@@ -7,9 +7,19 @@ export default function WorkoutGrid() {
 
   return (
     <GridWrapper>
-      {workoutData.map(({ workout, exercises }) => {
-        return <WorkoutCard workout={workout} exercises={exercises} />;
-      })}
+      {workoutData.length > 0 ? (
+        workoutData.map(({ workout, exercises }) => {
+          return (
+            <WorkoutCard
+              workout={workout}
+              exercises={exercises}
+              key={workout.id}
+            />
+          );
+        })
+      ) : (
+        <p>no workouts yet</p>
+      )}
     </GridWrapper>
   );
 }

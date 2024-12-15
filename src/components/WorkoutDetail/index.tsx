@@ -7,8 +7,9 @@ import WorkoutProvider from "../WorkoutProvider";
 
 export default function WorkoutDetail() {
   const workouts = useWorkoutsContext();
-  const { workoutId } = useParams();
-  const workoutData = getWorkout(workouts, Number(workoutId));
+  const { id } = useParams();
+  const workoutData = getWorkout(workouts, Number(id));
+
   const { workout, exercises } = workoutData;
   const { date } = workout;
   const dateStr = formatToDateTitle(date);

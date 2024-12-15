@@ -69,12 +69,12 @@ export const getWorkout = (
   workouts: WorkoutCardType[],
   id: number
 ): WorkoutCardType => {
-  for (const workout of workouts) {
-    if (id === workout.workout.id) {
-      return workout;
-    }
+  const workout = workouts.find(({ workout }) => workout.id === id);
+  if (workout) {
+    return workout;
+  } else {
+    throw new Error("Workout not found");
   }
-  throw new Error("Workout not found");
 };
 
 export const getExerciseFields = (exercise: ExerciseType) => {
@@ -90,3 +90,28 @@ export const getExerciseFields = (exercise: ExerciseType) => {
       break;
   }
 };
+
+export function convertExerciseFormData(data: ExerciseType) {
+  const formData = new FormData();
+  formData.append("name", data.name);
+  formData.append("type", data.type);
+  formData.append("workout_id", String(data.workoutId));
+  data.notes && formData.append("notes", data.notes);
+  data.easy && formData.append("easy", String(data.easy));
+
+  if (data.exerciseData.type === "cardio") {
+    formData.append("time", String(data.exerciseData.time));
+    formData.append("distance", String(data.exerciseData.distance));
+    formData.append("kcal", String(data.exerciseData.distance));
+    formData.append("type", String(data.exerciseData.type));
+  }
+  if (data.exerciseData.type === "strength") {
+    formData.append("sets", String(data.exerciseData.sets));
+    formData.append("reps", String(data.exerciseData.reps));
+    formData.append("weight", String(data.exerciseData.weight));
+    formData.append("type", String(data.exerciseData.multiple_weights));
+    formData.append("type", String(data.exerciseData.type));
+  }
+
+  return formData;
+}

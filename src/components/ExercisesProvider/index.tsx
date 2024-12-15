@@ -1,5 +1,5 @@
 import React from "react";
-import { ExerciseFormData, ExercisesContextProps } from "../../types";
+import { ExerciseType, ExercisesContextProps } from "../../types";
 
 export const ExercisesContext =
   React.createContext<ExercisesContextProps | null>(null);
@@ -9,7 +9,7 @@ export default function ExercisesProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [exercises, setExercises] = React.useState<ExerciseFormData[] | []>([]);
+  const [exercises, setExercises] = React.useState<ExerciseType[] | []>([]);
 
   const value = {
     exercises,

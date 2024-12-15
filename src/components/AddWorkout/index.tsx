@@ -1,16 +1,17 @@
 import Form from "../Form";
 import Input from "../Input";
 import ExerciseTab from "../ExerciseTab";
-import { Plus } from "lucide-react";
 import Button from "../Button";
-import Modal from "../Modal";
-import AddExercise from "../AddExercise";
+import AddExerciseModal from "../AddExerciseModal";
 import { formatISO } from "date-fns";
 import useExercisesContext from "../../hooks/useExercisesContext";
 import Spacer from "../Spacer";
+import { handleExercisePost, handleWorkoutPost } from "../../fetchers";
+import { useNavigate } from "react-router-dom";
 
 export default function AddWorkout() {
   const { exercises } = useExercisesContext();
+  const navigate = useNavigate();
 
   const defaultDate = formatISO(Date.now(), { representation: "date" });
 
@@ -18,16 +19,33 @@ export default function AddWorkout() {
     <Form>
       <Spacer />
       <Input label="date" id="date" value={defaultDate} type="date" />
-      <Modal btnText={"exercise"} Icon={Plus} type="simple">
-        <AddExercise />
-      </Modal>
+      <AddExerciseModal />
       {exercises &&
         exercises.map(({ name, type, slug }) => (
           <ExerciseTab type={type} key={slug} slug={slug}>
             {name}
           </ExerciseTab>
         ))}
-      <Button>save</Button>
+      <Button
+        onClick={async () => {
+          const { id } = await handleWorkoutPost(
+            import.meta.env.VITE_WORKOUT_ENDPOINT
+          );
+          await Promise.all(
+            exercises.map(async (exercise) => {
+              exercise.workoutId = id;
+              await handleExercisePost(
+                import.meta.env.VITE_EXERCISE_ENDPOINT,
+                exercise
+              );
+              return exercise;
+            })
+          );
+          navigate("/");
+        }}
+      >
+        save
+      </Button>
     </Form>
   );
 }

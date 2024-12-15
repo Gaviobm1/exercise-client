@@ -21,7 +21,7 @@ export default function Select({
         {...delegated}
       >
         {options.map((type) => (
-          <option value={type} selected={currentSelected === type} key={type}>
+          <option value={type} key={type}>
             {type}
           </option>
         ))}

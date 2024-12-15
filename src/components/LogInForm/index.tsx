@@ -2,32 +2,30 @@ import React from "react";
 import Form from "../Form";
 import Input from "../Input";
 import Button from "../Button";
-import Cookies from "js-cookie";
 import AnimatedLink from "../AnimatedLink";
+import { handleSubmitAuth } from "../../fetchers";
+import { useNavigate } from "react-router-dom";
 
 export default function LogInForm() {
   const emailRef = React.useRef<HTMLInputElement>(null);
   const passwordRef = React.useRef<HTMLInputElement>(null);
+  const [error, setError] = React.useState<string>("");
 
-  async function logIn(e: React.MouseEvent<HTMLButtonElement>) {
-    e.preventDefault();
-    const response = await fetch("http://localhost:8080/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: emailRef.current?.value,
-        password: passwordRef.current?.value,
-      }),
-    });
-    const data = await response.json();
-    const { token } = data;
-    Cookies.set("token", token, { expires: 7 });
-  }
+  const navigate = useNavigate();
+
+  const endpoint = import.meta.env.VITE_LOGIN_ENDPOINT || "";
 
   return (
-    <Form>
+    <Form
+      onSubmit={async (e) => {
+        const response = await handleSubmitAuth(e, endpoint);
+        if (!response.success) {
+          setError(response.message);
+          return;
+        }
+        navigate("/");
+      }}
+    >
       <Input label="email" id="email" type="email" ref={emailRef} />
       <Input label="password" id="password" type="password" ref={passwordRef} />
       <Button>log in</Button>
@@ -37,6 +35,7 @@ export default function LogInForm() {
       <AnimatedLink linkProps={{ to: "/register" }}>
         forgot password
       </AnimatedLink>
+      {error && <p style={{ fontWeight: "800" }}>{error}</p>}
     </Form>
   );
 }

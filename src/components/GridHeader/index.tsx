@@ -8,8 +8,8 @@ export default function GridHeader({ children, icons }: GridHeaderProps) {
     <header className={styles.wrapper}>
       <h2>{children}</h2>
       <div className={styles.iconwrapper}>
-        {icons.map(({ icon, link }) => (
-          <Link to={link}>
+        {icons.map(({ icon, link, slug }) => (
+          <Link to={link} key={slug}>
             <IconButton Icon={icon} />
           </Link>
         ))}

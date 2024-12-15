@@ -1,4 +1,8 @@
 .wrapper {
-  margin: auto;
+  display: flex;
+  justify-content: center;
   padding: 2rem;
+  border-top: 2px solid var(--secondary-background);
+  margin-left: 5vw;
+  margin-right: 5vw;
 }

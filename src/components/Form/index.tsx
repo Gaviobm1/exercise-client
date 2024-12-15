@@ -1,10 +1,15 @@
+import { forwardRef } from "react";
 import styles from "./Form.module.css";
 import { FormProps } from "react-router-dom";
 
-export default function Form({ children, ...delegated }: FormProps) {
-  return (
-    <form className={styles.wrapper} {...delegated}>
-      {children}
-    </form>
-  );
-}
+const Form = forwardRef<HTMLFormElement, FormProps>(
+  ({ children, ...delegated }, ref) => {
+    return (
+      <form className={styles.wrapper} ref={ref} {...delegated}>
+        {children}
+      </form>
+    );
+  }
+);
+
+export default Form;

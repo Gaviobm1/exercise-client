@@ -1,4 +1,4 @@
-import { Plus, X } from "lucide-react";
+import { X } from "lucide-react";
 import styles from "./AddExerciseModal.module.css";
 import React from "react";
 import Form from "../Form";
@@ -13,54 +13,65 @@ import TextArea from "../TextArea";
 import { ExerciseType } from "../../types";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import Button from "../Button";
+import { handleExercisePost } from "../../fetchers";
 
-export default function AddExerciseModal() {
+type WorkoutStringType = "strength" | "cardio";
+
+export default function AddExerciseModal({
+  isNew,
+  workout,
+}: {
+  isNew?: boolean;
+  workout?: number;
+}) {
   const { exercises, setExercises } = useExercisesContext();
-  const [type, setType] = React.useState("cardio");
-  const formRef = React.useRef<HTMLFormElement>(null);
+  const [formType, setFormType] = React.useState<WorkoutStringType>("cardio");
   const [open, setOpen] = React.useState(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
-    const type =
-      String(formData.get("type")) === "strength" ? "strength" : "cardio";
     const exercise: Partial<ExerciseType> = {
       name: String(formData.get("name")),
-      workoutId: 0,
-      type: type,
+      type: formType,
       easy: formData.get("easy") ? true : false,
       notes: String(formData.get("notes")),
       slug: uuidv4(),
     };
 
-    if (type === "strength") {
-      exercise.exerciseData = {
-        type: type,
+    if (formType === "strength") {
+      exercise.exercise_data = {
+        type: formType,
         sets: Number(formData.get("sets")),
         reps: Number(formData.get("reps")),
         weight: Number(formData.get("weight")),
         multiple_weights:
           formData.get("multiple_weights") === "on" ? true : false,
       };
-    } else if (type === "cardio") {
-      exercise.exerciseData = {
-        type: type,
+    } else if (formType === "cardio") {
+      exercise.exercise_data = {
+        type: formType,
         time: Number(formData.get("time")),
         distance: Number(formData.get("distance")),
         kcal: Number(formData.get("kcal")),
       };
     }
-
-    const nextExercises = [...exercises, exercise as ExerciseType];
-    setExercises(nextExercises);
+    if (isNew) {
+      const nextExercises = [...exercises, exercise as ExerciseType];
+      setExercises(nextExercises);
+    } else {
+      exercise.workoutId = workout;
+      await handleExercisePost(
+        import.meta.env.VITE_EXERCISE_ENDPOINT,
+        exercise as ExerciseType
+      );
+    }
   };
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
-      <Dialog.Trigger className={styles.trigger}>
-        <p>exercise</p>
-        <Plus />
+      <Dialog.Trigger className={styles.button}>
+        <p>add</p>
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className={styles.overlay}>
@@ -79,7 +90,6 @@ export default function AddExerciseModal() {
                 handleSubmit(e);
                 setOpen(false);
               }}
-              ref={formRef}
             >
               <Spacer />
               <Input label="name" id="name" required />
@@ -87,11 +97,13 @@ export default function AddExerciseModal() {
                 label="type"
                 id="type"
                 options={exerciseTypeOptions}
-                defaultValue={type}
-                handleChange={(e) => setType(e.target.value)}
+                defaultValue={formType}
+                handleChange={(e) =>
+                  setFormType(e.target.value as WorkoutStringType)
+                }
               />
 
-              {type === "strength" && (
+              {formType === "strength" && (
                 <>
                   <Input label="sets" id="sets" type="number" />
                   <Input label="reps" id="reps" type="number" />
@@ -109,7 +121,7 @@ export default function AddExerciseModal() {
                 </>
               )}
 
-              {type === "cardio" && (
+              {formType === "cardio" && (
                 <>
                   <Input label="time" id="time" type="number" step="any" />
                   <Input

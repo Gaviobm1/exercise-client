@@ -13,3 +13,9 @@
   gap: 1rem;
   white-space: nowrap;
 }
+
+.triggerWrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}

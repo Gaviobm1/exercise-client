@@ -25,12 +25,12 @@ export default function DetailField({ keyStr, valStr }: DetailFieldProps) {
   }, [toggle]);
 
   return (
-    <div>
+    <div className={keyStr === "notes" ? styles.wrapper : undefined}>
       <div className={styles.headerWrapper}>
         <h4>{keyStr}</h4>
         {measurements && <TextSwitch units={measurements} />}
       </div>
-      {value}
+      <span className={styles.textWrapper}>{value}</span>
     </div>
   );
 }

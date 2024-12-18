@@ -1,6 +1,6 @@
-import Modal from "../Modal";
 import { DetailHeaderProps } from "../../types";
 import EditExerciseDetail from "../EditExerciseDetail";
+import DeleteExerciseModal from "../DeleteExerciseModal";
 import styles from "./DetailHeader.module.css";
 
 export default function DetailHeader({ children, Icon }: DetailHeaderProps) {
@@ -10,9 +10,11 @@ export default function DetailHeader({ children, Icon }: DetailHeaderProps) {
         <Icon size={32} />
         {children}
       </h3>
-      <Modal btnText="edit">
+      <div className={styles.triggerWrapper}>
+        {" "}
         <EditExerciseDetail />
-      </Modal>
+        <DeleteExerciseModal />
+      </div>
     </header>
   );
 }

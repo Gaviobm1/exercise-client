@@ -62,6 +62,11 @@
   transition: font-variation-settings 200ms ease-in-out;
 }
 
+.buttonWrapper {
+  display: flex;
+  gap: 1rem;
+}
+
 @keyframes fadein {
   0% {
     opacity: 0;

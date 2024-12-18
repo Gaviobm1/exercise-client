@@ -8,25 +8,25 @@ import React, {
 import { LucideIcon, LucideProps } from "lucide-react";
 import { LinkProps } from "react-router-dom";
 
-type ExerciseData<T> = {
-  id: number;
+type exercise_data<T> = {
+  id?: number;
   name: string;
   notes?: string;
   easy?: boolean;
-  workoutId: number;
+  workoutId?: number;
   slug: string;
   type: "strength" | "cardio";
-  exerciseData: T;
+  exercise_data: T;
 };
 
 type ExerciseFormFields<T> = {
   name: string;
-  workoutId: number;
+  workoutId: number | undefined;
   notes?: string;
   easy: boolean;
   type: "strength" | "cardio";
   slug: string;
-  exerciseData?: T;
+  exercise_data?: T;
 };
 
 export type StrengthData = {
@@ -64,13 +64,13 @@ export type MeasurementSystemType = {
   measurements: [string, string][];
 };
 
-export type ExerciseType = ExerciseData<StrengthData | CardioData>;
+export type ExerciseType = exercise_data<StrengthData | CardioData>;
 export type ExerciseFormData = ExerciseFormFields<
   StrengthFields | CardioFields
 >;
 
 export type DetailBodyProps = {
-  exerciseData: StrengthFields | CardioFields;
+  exercise_data: StrengthFields | CardioFields;
 };
 
 export type WorkoutType = {
@@ -100,7 +100,7 @@ export type WorkoutCardType = {
 
 export type ExerciseDetailType = {
   date: Date;
-  exercise: ExerciseData<StrengthData | CardioData>;
+  exercise: exercise_data<StrengthData | CardioData>;
 };
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -141,7 +141,7 @@ export interface RiseFallProps {
 
 export interface ExercisePillProps {
   name: string;
-  exerciseId: number;
+  exerciseId: number | undefined;
   type: string;
   easy?: boolean;
 }

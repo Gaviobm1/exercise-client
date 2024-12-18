@@ -1,21 +1,37 @@
 import styles from "./WorkoutDetail.module.css";
-import { formatToDateTitle, getWorkout } from "../../helpers";
 import ExerciseGrid from "../ExerciseGrid";
-import { useParams } from "react-router-dom";
-import useWorkoutsContext from "../../hooks/useWorkoutsContext";
 import WorkoutProvider from "../WorkoutProvider";
+import useWorkoutCardData from "../../hooks/useWorkoutCardData";
+import AddExerciseModal from "../AddExerciseModal";
+import ExercisesProvider from "../ExercisesProvider";
+import { useParams } from "react-router-dom";
+import DeleteWorkoutModal from "../DeleteWorkoutModal";
+import EditWorkoutModal from "../EditWorkoutModal";
 
 export default function WorkoutDetail() {
-  const workouts = useWorkoutsContext();
+  const workouts = useWorkoutCardData();
   const { id } = useParams();
-  const workoutData = getWorkout(workouts, Number(id));
+
+  if (!workouts.length) {
+    return null;
+  }
+
+  const workoutData = workouts.filter(
+    ({ workout }) => workout.id === Number(id)
+  )[0];
 
   const { workout, exercises } = workoutData;
-  const { date } = workout;
-  const dateStr = formatToDateTitle(date);
   return (
     <main className={styles.wrapper}>
-      <h1>{dateStr}</h1>
+      <h1 className={styles.header}>
+        <WorkoutProvider workout={workout}>
+          <EditWorkoutModal />
+        </WorkoutProvider>
+        <ExercisesProvider>
+          <AddExerciseModal workout={workout.id} />
+        </ExercisesProvider>
+        <DeleteWorkoutModal />
+      </h1>
       <WorkoutProvider workout={workout}>
         <ExerciseGrid exercises={exercises} />
       </WorkoutProvider>

@@ -6,8 +6,8 @@ import useExerciseContext from "../../hooks/useExerciseContext";
 
 export default function ExerciseDetail() {
   const exercise = useExerciseContext();
-  const { name, exerciseData } = exercise;
-  const { type } = exerciseData;
+  const { name, exercise_data } = exercise;
+  const { type } = exercise_data;
   return (
     <article className={styles.wrapper}>
       <DetailHeader Icon={type === "cardio" ? HeartPulse : Dumbbell}>

@@ -29,7 +29,7 @@ export const dummyExercise = {
   notes: "Maintain a steady pace.",
   easy: true,
   workout_id: 1,
-  exerciseData: {
+  exercise_data: {
     type: "cardio",
     time: 30,
     distance: 5,
@@ -48,7 +48,7 @@ export const sampleExercises: ExerciseType[] = [
     name: "Bench Press",
     notes: "Focus on form and slow descent.",
     workout_id: 1,
-    exerciseData: {
+    exercise_data: {
       type: "strength",
       reps: 10,
       sets: 3,
@@ -62,7 +62,7 @@ export const sampleExercises: ExerciseType[] = [
     notes: "Maintain a steady pace.",
     easy: true,
     workout_id: 1,
-    exerciseData: {
+    exercise_data: {
       type: "cardio",
       time: 30,
       distance: 5,
@@ -73,7 +73,7 @@ export const sampleExercises: ExerciseType[] = [
     id: 3,
     name: "Deadlift",
     workout_id: 1,
-    exerciseData: {
+    exercise_data: {
       type: "strength",
       reps: 5,
       sets: 4,
@@ -86,7 +86,7 @@ export const sampleExercises: ExerciseType[] = [
     name: "Cycling",
     easy: false,
     workout_id: 1,
-    exerciseData: {
+    exercise_data: {
       type: "cardio",
       time: 45,
       distance: 20,

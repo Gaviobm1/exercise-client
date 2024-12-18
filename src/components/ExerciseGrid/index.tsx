@@ -11,7 +11,7 @@ export default function ExerciseGrid({
   return (
     <GridWrapper>
       {exercises.map((exercise) => (
-        <ExerciseProvider exercise={exercise}>
+        <ExerciseProvider exercise={exercise} key={exercise.slug}>
           <ExerciseDetail />
         </ExerciseProvider>
       ))}

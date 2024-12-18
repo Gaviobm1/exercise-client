@@ -4,39 +4,42 @@ import Input from "../Input";
 import Select from "../Select";
 import Spacer from "../Spacer";
 import Button from "../Button";
-import * as Dialog from "@radix-ui/react-dialog";
 import { v4 as uuidv4 } from "uuid";
 import { exerciseTypeOptions } from "../../data";
 import useExercisesContext from "../../hooks/useExercisesContext";
 import TextArea from "../TextArea";
-import { ExerciseFormData } from "../../types";
+import { ExerciseType } from "../../types";
+
+type WorkoutStringType = "strength" | "cardio";
 
 export default function AddExercise() {
   const { exercises, setExercises } = useExercisesContext();
+  const [formType, setFormType] = React.useState<WorkoutStringType>("cardio");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
-    const type =
-      String(formData.get("type")) === "strength" ? "strength" : "cardio";
-    const exercise: ExerciseFormData = {
+
+    const exercise: Partial<ExerciseType> = {
       name: String(formData.get("name")),
-      type: type,
+      type: formType,
       easy: formData.get("easy") ? true : false,
       notes: String(formData.get("notes")),
       slug: uuidv4(),
     };
 
-    if (type === "strength") {
-      exercise.exerciseData = {
+    if (formType === "strength") {
+      exercise.exercise_data = {
+        type: formType,
         sets: Number(formData.get("sets")),
         reps: Number(formData.get("reps")),
         weight: Number(formData.get("weight")),
         multiple_weights:
           formData.get("multiple_weights") === "on" ? true : false,
       };
-    } else if (type === "cardio") {
-      exercise.exerciseData = {
+    } else if (formType === "cardio") {
+      exercise.exercise_data = {
+        type: formType,
         time: Number(formData.get("time")),
         distance: Number(formData.get("distance")),
         kcal: Number(formData.get("kcal")),
@@ -44,10 +47,9 @@ export default function AddExercise() {
     }
 
     const nextExercises = [...exercises, exercise];
-    setExercises(nextExercises);
+    setExercises(nextExercises as ExerciseType[]);
   };
 
-  const [type, setType] = React.useState("cardio");
   return (
     <Form onSubmit={handleSubmit}>
       <Spacer />
@@ -56,11 +58,11 @@ export default function AddExercise() {
         label="type"
         id="type"
         options={exerciseTypeOptions}
-        currentSelected={type}
-        handleChange={(e) => setType(e.target.value)}
+        defaultValue={formType}
+        handleChange={(e) => setFormType(e.target.value as WorkoutStringType)}
       />
 
-      {type === "strength" && (
+      {formType === "strength" && (
         <>
           <Input label="sets" id="sets" type="number" />
           <Input label="reps" id="reps" type="number" />
@@ -73,7 +75,7 @@ export default function AddExercise() {
         </>
       )}
 
-      {type === "cardio" && (
+      {formType === "cardio" && (
         <>
           <Input label="time" id="time" type="number" step="any" />
           <Input label="distance (km)" id="distance" type="number" step="any" />
@@ -84,7 +86,6 @@ export default function AddExercise() {
       <TextArea label="notes" id="notes" />
 
       <Spacer />
-
       <Button type="submit">save</Button>
     </Form>
   );

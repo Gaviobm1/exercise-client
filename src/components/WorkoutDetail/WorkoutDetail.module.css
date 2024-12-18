@@ -5,3 +5,15 @@
   width: var(--layout-element-width);
   margin: auto;
 }
+
+.header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.button {
+  background: transparent;
+  padding: 1rem;
+  cursor: pointer;
+}

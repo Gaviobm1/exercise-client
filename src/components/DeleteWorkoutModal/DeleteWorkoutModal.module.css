@@ -30,9 +30,10 @@
 }
 
 .button,
-.trigger {
-  font-size: 1.25rem;
+.trigger,
+.cancel {
   background-color: var(--secondary-background);
+  font-size: 1.25rem;
   border: none;
   border-radius: var(--border-radius-button);
   padding: 0.5rem 1rem;
@@ -41,25 +42,37 @@
   outline-offset: var(--outline-offset);
   transition: font-variation-settings 400ms ease-in-out;
   color: var(--font-color);
+  background-color: hsl(20deg 100% 50%);
 }
 
 .trigger {
-  background-color: transparent;
   display: flex;
   justify-content: flex-start;
   align-self: flex-start;
   align-items: center;
   gap: 1rem;
-  padding: 0;
+  background-color: hsl(20deg 100% 50%);
+}
+
+.cancel {
+  background-color: var(--secondary-background);
 }
 
 .button:hover,
 .button:focus,
 .trigger:hover,
-.trigger:focus {
+.trigger:focus,
+.cancel:hover,
+.cancel:focus {
   cursor: pointer;
   font-variation-settings: var(--button-hover-font-settings);
   transition: font-variation-settings 200ms ease-in-out;
+}
+
+.buttonWrapper {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
 }
 
 @keyframes fadein {

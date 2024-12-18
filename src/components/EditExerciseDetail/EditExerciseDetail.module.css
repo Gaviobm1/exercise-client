@@ -1,3 +1,73 @@
 .wrapper {
   border-radius: var(--border-radius-button);
 }
+
+.overlay {
+  background: rgba(0 0 0 / 0.5);
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow-y: auto;
+}
+
+.content {
+  font-family: "Recursive";
+  width: min(400px, 90%);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-radius: 8px;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  background: transparent;
+  border: none;
+  top: 2rem;
+  right: 1rem;
+  color: var(--font-color);
+}
+
+.close:hover {
+  cursor: pointer;
+}
+
+.button,
+.trigger {
+  background-color: var(--secondary-background);
+  border: none;
+  border-radius: var(--border-radius-button);
+  padding: 0.5rem 1rem;
+  font-variation-settings: var(--button-font-settings);
+  align-self: center;
+  outline-offset: var(--outline-offset);
+  transition: font-variation-settings 400ms ease-in-out;
+  color: var(--font-color);
+}
+
+.trigger {
+  display: flex;
+  justify-content: flex-start;
+  align-self: flex-start;
+  align-items: center;
+  gap: 1rem;
+}
+
+.button:hover,
+.button:focus,
+.trigger:hover,
+.trigger:focus {
+  cursor: pointer;
+  font-variation-settings: var(--button-hover-font-settings);
+  transition: font-variation-settings 200ms ease-in-out;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}

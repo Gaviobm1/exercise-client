@@ -6,21 +6,23 @@ import useExerciseContext from "../../hooks/useExerciseContext";
 
 export default function DetailBody() {
   const exercise = useExerciseContext();
-  const { exerciseData } = exercise;
-  const keys = Object.keys(exerciseData);
-  const values = Object.values(exerciseData);
+  const { exercise_data, notes, easy } = exercise;
+  const exerciseKeys = Object.keys(exercise_data);
+  const exerciseValues = Object.values(exercise_data);
 
   return (
     <div className={styles.wrapper}>
-      {keys.map((key, index) => {
+      {exerciseKeys.map((key, index) => {
         const keyStr = removeUnderscore(key);
-        const valStr = valueToString(values[index]);
+        const valStr = valueToString(exerciseValues[index]);
         return (
-          <ValueProvider>
+          <ValueProvider key={keyStr}>
             <DetailField keyStr={keyStr} valStr={valStr} />
           </ValueProvider>
         );
       })}
+      {easy && <DetailField keyStr="easy" valStr="yes" />}
+      {notes && <DetailField keyStr="notes" valStr={notes} />}
     </div>
   );
 }
